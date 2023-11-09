@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  const lettersEnglish = "abcdefghijklmnopqrstuvwxyz".split("");
+  const lettersHebrew = "אבגדהוזחטיכךלמנסעפףצץקרשת".split("");
+  const numbers = "1234567890".split("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {lettersEnglish.map((lettersEnglish, index) => (
+        <lettersEnglish key={index} lettersEnglish={lettersEnglish} />
+      ))}
+
+
+      <p className="App-intro">
+        {lettersEnglish}
+      </p>
+      <p className="App-intro">
+        {lettersHebrew}
+      </p>
+      <p className="App-intro">
+        {numbers}
+      </p>
+
     </div>
   );
 }
