@@ -1,9 +1,9 @@
 import React from 'react';
 
-    function Screen({currentText}) {
+    function Screen({currentText }) {
         return (
             <div className="screen">
-                <h1>{currentText}</h1>
+                 <textarea value={currentText}  />
             </div>
         );
     }
