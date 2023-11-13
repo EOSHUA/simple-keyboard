@@ -14,7 +14,7 @@ function App() {
   if (isEnglish) {
     keyboard = "[]poiuytrewqlkjhgfdamnbvcxz".split("");
   } else {
-    keyboard = "אבגדהוזחטיכךלמנסעפףצץקרשת".split("");
+    keyboard = "פםןוטארק'ףךלחיעכגדשץתצמנהבסז".split("");
   }
 
   return (
@@ -34,7 +34,7 @@ function App() {
           ))}
         </div>
         <div className='button'>
-          
+
 
           <div className='enter'>
             <Word letter="enter" myOnClick={() => setCurrentLetters(currentLetters + '\n')} />
@@ -52,7 +52,7 @@ function App() {
           </div>
         </div>
 
-        <button id="changLanguage" onClick={() => setLanguage(!isEnglish)}>to change language</button>
+        <button id="changLanguage" onClick={() => setLanguage(!isEnglish)}> {(!isEnglish ? " change to english" : "החלף לעברית")}</button>
       </Keys>
     </div>
   );

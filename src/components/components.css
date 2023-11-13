@@ -18,8 +18,9 @@ body {
 }
 
 .word:hover {
-    background-color: #8394a0;
-    transform: translateY(-2px);
+   
+    transform: translateY(-3px);
+   
 
 }
 
