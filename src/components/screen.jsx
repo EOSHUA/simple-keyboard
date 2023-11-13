@@ -1,9 +1,9 @@
 import React from 'react';
 
-    function Screen({currentText }) {
+    function Screen({currentText,style }) {
         return (
-            <div className="screen">
-                 <textarea value={currentText}  />
+            <div className="screen" style={style}>
+                 <textarea  value={currentText}  />
             </div>
         );
     }
