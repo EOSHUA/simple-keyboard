@@ -16,6 +16,10 @@ function App() {
   } else {
     keyboard = "פםןוטארק'ףךלחיעכגדשץתצמנהבסז".split("");
   }
+  const controls = ['\n', '\u00A0'];
+  const onKeyPress = (event) => { setCurrentLetters(currentLetters + event.target.innerHTML); }
+  const onSpecialKeyPress = (event) => { setCurrentLetters(currentLetters + controls[event.target.getAttribute("access")]); }
+  //setCurrentLetters(currentLetters + event.target.value); }
 
   return (
     <div className="App">
@@ -23,24 +27,25 @@ function App() {
       <Keys>
         <div className="numberKeys">
           {keyboardNumber.map((item, index) => (
-            <Word key={index} letter={item} myOnClick={() => setCurrentLetters(currentLetters + item)} />
+            <Word key={index} letter={item} myOnClick={onKeyPress} />
           ))}
         </div>
         <br></br>
 
         <div className="letterKeys">
           {keyboard.map((item, index) => (
-            <Word key={index} letter={item} myOnClick={() => setCurrentLetters(currentLetters + item)} />
+            <Word key={index} letter={item} myOnClick={onKeyPress} />
           ))}
         </div>
+
         <div className='button'>
 
 
           <div className='enter'>
-            <Word letter="enter" myOnClick={() => setCurrentLetters(currentLetters + '\n')} />
+            <Word letter="enter" control={0} myOnClick={onSpecialKeyPress} />
           </div>
           <div className='space'>
-            <Word letter="space" myOnClick={() => setCurrentLetters(currentLetters + '\u00A0')} />
+            <Word letter="space" control={1} myOnClick={onSpecialKeyPress} />
           </div>
 
           <div className='delete'>
@@ -49,6 +54,9 @@ function App() {
 
           <div className='clear'>
             <Word letter="clear" myOnClick={() => setCurrentLetters("")} />
+          </div>
+          <div className='changefont'>
+            <Word letter="changefont" />
           </div>
         </div>
 
