@@ -100,7 +100,12 @@ textarea {
 
 .enter {
     display: flex;
-    margin-right: 18%;
+   
+}
+.color {
+    display: flex;
+    margin-right: 12%;
+   
 }
 
 .button {

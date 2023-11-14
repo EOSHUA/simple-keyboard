@@ -8,14 +8,14 @@ import React, { useState } from "react";
 function App() {
   const [isEnglish, setLanguage] = useState(true);
   const [currentLetters, setCurrentLetters] = useState(" ");
-
+  const [currentTextColor, setCurrentTextColor] = useState("black");
   let keyboard;
   let keyboardNumber = "1234567890-=+*/`".split("");
 
   if (isEnglish) {
     keyboard = "[]poiuytrewqlkjhgfdamnbvcxz".split("");
   } else {
-    keyboard = "פםןוטארק'ףךלחיעכגדשץתצמנהבסז".split("");
+    keyboard = "פםןוטארקףךלחיעכגדשץתצמנהבסז".split("");
   }
   const controls = ['\n', '\u00A0'];
   const onKeyPress = (event) => { setCurrentLetters(currentLetters + event.target.innerHTML); }
@@ -23,17 +23,21 @@ function App() {
 
   const onDelete = () => { setCurrentLetters(currentLetters.slice(0, -1)); }
   const onClear = () => { setCurrentLetters(""); }
-  
+  const onTextColorChange = () => { setCurrentTextColor(currentTextColor === "black" ? "red" : "black"); }
+
 
   return (
     <div className="App">
-      <Screen currentText={currentLetters} />
+      <Screen currentText={currentLetters}  textColor={currentTextColor}/>
+
       <Keys>
         <div className="numberKeys">
           {keyboardNumber.map((item, index) => (
             <Word key={index} letter={item} myOnClick={onKeyPress} />
           ))}
+
         </div>
+
         <br></br>
 
         <div className="letterKeys">
@@ -46,6 +50,8 @@ function App() {
           onSpecialKeyPress={onSpecialKeyPress}
           onDelete={onDelete}
           onClear={onClear}
+          onTextColorChange={onTextColorChange}
+          
         />
 
 
