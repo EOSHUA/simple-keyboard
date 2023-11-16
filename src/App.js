@@ -1,61 +1,83 @@
 
- import './App.css';
- import Keys from './components/keys'
- import Screen from './components/screen';
- import Word from './components/word';
- import React, { useState } from "react";
+import Screen from "./components/screen";
+import Keys from "./components/Keys";
+import Word from "./components/Word";
+import KeyboardButtons from "./components/KeyboardButtons";
+import React, { useState } from "react";
+function App() {
+  const [isEnglish, setLanguage] = useState(true);
+  const [currentLetters, setCurrentLetters] = useState("");
+  const [charColors, setCharColors] = useState([]);
+  const [currentTextColor, setCurrentTextColor] = useState("black");
 
+  let keyboard;
+  let keyboardNumber = "1234567890-=+*/`".split("");
 
-  function App() {
-
-    let keyboard;
-    let keyboardNumber="0( 9) 8* 7& 6^ %5 $4 #3 @2 !1 / * - + =".split(" ");
-
-    const [isEnglish, setLangeuge] = useState(true);
-    const [currentLetters, setCurrentLetters] = useState("")
-
-    if (isEnglish){
-      keyboard =  "[ ] p o i u y t r e w q l k j h g f d a m n b v c x z".split(" ");
-
-    }
-    else{
-      keyboard = "אבגדהוזחטיכךלמנסעפףצץקרשת".split("");
-    }
-    return(
-      
-      <div className="App">
-        
-           <Screen currentText={currentLetters} />
-
-           <Keys>
-            <div className="numberKeys">
-           {keyboardNumber.map((item, index) => (
-             <Word key={index} letter={item} myOnClick={()=>setCurrentLetters(currentLetters +item)}/>
-             
-
-            ))}
-            </div>
-            <br></br>
-            
-            <div className="letterKeys">
-             {keyboard.map((item, index) => (
-             <Word key={index} letter={item} myOnClick={()=>setCurrentLetters(currentLetters +item)}/>
-             
-
-            ))}
-            </div>
-            
-             <div className='space'>
-                 <Word  letter="space"  myOnClick={() => setCurrentLetters(currentLetters + " ")} />
-             </div>
-            
-                <button id="changLanguage"  onClick={() => setLangeuge(!isEnglish)}>to change language</button>
-                
-           </Keys>
-
-      </div>
-    )
+  if (isEnglish) {
+    keyboard = "[]poiuytrewqlkjhgfdamnbvcxz".split("");
+  } else {
+    keyboard = "פםןוטארקףךלחיעכגדשץתצמנהבסז".split("");
   }
-  export default App;
 
+  const controls = ['\n', '\u00A0'];
 
+  const onKeyPress = (event) => {
+    const char = event.target.innerHTML;
+    
+    setCharColors([...charColors, currentTextColor]);
+    setCurrentLetters(currentLetters + char);
+  }
+
+  const onSpecialKeyPress = (event) => {
+    setCurrentLetters(currentLetters + controls[event.target.getAttribute("access")]);
+    setCharColors([...charColors, currentTextColor]);
+  };
+
+  const onDelete = () => {
+    setCurrentLetters(currentLetters.slice(0, -1));
+    setCharColors(charColors.slice(0, -1));
+  };
+
+  const onClear = () => {
+    setCurrentLetters("");
+    setCharColors([]);
+  };
+
+  const onChangeTextColor = (color) => {
+    setCurrentTextColor(color);
+  };
+
+  return (
+    <div className="App">
+      <Screen currentText={currentLetters}  charColors={charColors} />
+      <Keys>
+        <div className="numberKeys">
+          {keyboardNumber.map((item, index) => (
+            <Word key={index} letter={item} myOnClick={onKeyPress} />
+          ))}
+        </div>
+        <br></br>
+        <div className="letterKeys">
+          {keyboard.map((item, index) => (
+            <Word key={index} letter={item} myOnClick={onKeyPress} />
+          ))}
+        </div>
+        <KeyboardButtons
+          onKeyPress={onKeyPress}
+          onSpecialKeyPress={onSpecialKeyPress}
+          onDelete={onDelete}
+          onClear={onClear}
+          onChangeTextColor={onChangeTextColor}
+          currentText={currentLetters} 
+          charColors={charColors}
+
+        />
+        <button id="changLanguage" onClick={() => setLanguage(!isEnglish)}>
+          {!isEnglish ? " change to english" : "החלף לעברית"}
+        </button>
+      </Keys>
+    </div>
+  );
+}
+
+export default App;
