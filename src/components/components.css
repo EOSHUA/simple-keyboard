@@ -69,7 +69,11 @@ textarea {
     width: 80%;
     height: 150px;
     margin: 2%;
+<<<<<<< HEAD
     font-size: 50px;
+=======
+    font-size: 20px;
+>>>>>>> a6d2d056437432ad656e150874e2507b101bfc48
 
 }
 
@@ -104,7 +108,11 @@ textarea {
 }
 .color {
     display: flex;
+<<<<<<< HEAD
     margin-right: 2%;
+=======
+    margin-right: 12%;
+>>>>>>> a6d2d056437432ad656e150874e2507b101bfc48
    
 }
 
@@ -117,6 +125,7 @@ textarea {
     display: flex;
     gap: 1%;
 
+<<<<<<< HEAD
 }
 .span{
     font-size: 50px;
@@ -130,3 +139,6 @@ textarea {
     font-size: 50px;
   }
   
+=======
+}
+>>>>>>> a6d2d056437432ad656e150874e2507b101bfc48

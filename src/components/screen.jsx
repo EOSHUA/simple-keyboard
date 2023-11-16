@@ -1,5 +1,6 @@
 // import React from 'react';
 
+<<<<<<< HEAD
 // function Screen({ currentText, charColors}) {
 
 //   return (
@@ -45,3 +46,20 @@ function Screen({ currentText, charColors, setCurrentText }) {
 }
 
 export default Screen;
+=======
+function Screen({ currentText, textColor}) {
+    const textStyle = {
+        color: textColor,
+    };
+    return (
+        <div className="screen">
+            <textarea value={currentText} style={textStyle}
+
+            />
+        </div>
+    );
+}
+
+
+export default Screen;
+>>>>>>> a6d2d056437432ad656e150874e2507b101bfc48
