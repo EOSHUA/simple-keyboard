@@ -105,7 +105,21 @@ textarea {
 .color {
     display: flex;
     margin-right: 2%;
-   
+}
+.ChangeColorToRed{
+    display: flex;
+    margin-right: 2%;
+    color: red;
+}
+.ChangeColorToBlack{
+    display: flex;
+    margin-right: 2%;
+    color: black;
+}
+.ChangeColorToBlue{
+    display: flex;
+    margin-right: 2%;
+    color: blue;
 }
 
 .button {

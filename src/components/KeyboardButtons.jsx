@@ -4,13 +4,13 @@ const KeyboardButtons = ({ onSpecialKeyPress, onDelete, onClear, onChangeTextCol
   return (
     <div className='button'>
      
-     <div className='color' onClick={() => onChangeTextColor('red')}>
+     <div className='ChangeColorToRed' onClick={() => onChangeTextColor('red')}>
         <Word letter="red" color="red"  />
       </div>
-      <div className='color' onClick={() => onChangeTextColor('black')}>
+      <div className='ChangeColorToBlack' onClick={() => onChangeTextColor('black')}>
         <Word letter="black" color="black" />
       </div>
-      <div className='color' onClick={() => onChangeTextColor('blue')}>
+      <div className='ChangeColorToBlue' onClick={() => onChangeTextColor('blue')}>
         <Word letter="blue" color="blue" />
       </div>
 

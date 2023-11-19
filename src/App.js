@@ -11,20 +11,17 @@ function App() {
   const [charColors, setCharColors] = useState([]);
   const [currentTextColor, setCurrentTextColor] = useState("black");
 
-  let keyboard;
+  
   let keyboardNumber = "1234567890-=+*/`".split("");
-
-  if (isEnglish) {
-    keyboard = "[]poiuytrewqlkjhgfdamnbvcxz".split("");
-  } else {
-    keyboard = "פםןוטארקףךלחיעכגדשץתצמנהבסז".split("");
-  }
-
   const controls = ['\n', '\u00A0'];
+
+  
+  const keyboard = isEnglish
+    ? "[]poiuytrewqlkjhgfdamnbvcxz".split("")
+    : "פםןוטארקףךלחיעכגדשץתצמנהבסז".split("");
 
   const onKeyPress = (event) => {
     const char = event.target.innerHTML;
-    
     setCharColors([...charColors, currentTextColor]);
     setCurrentLetters(currentLetters + char);
   }
@@ -48,6 +45,8 @@ function App() {
     setCurrentTextColor(color);
   };
 
+
+
   return (
     <div className="App">
       <Screen currentText={currentLetters}  charColors={charColors} />
@@ -57,7 +56,7 @@ function App() {
             <Word key={index} letter={item} myOnClick={onKeyPress} />
           ))}
         </div>
-        <br></br>
+       <br />
         <div className="letterKeys">
           {keyboard.map((item, index) => (
             <Word key={index} letter={item} myOnClick={onKeyPress} />
